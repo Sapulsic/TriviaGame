@@ -15,7 +15,7 @@ var $incorrectAnswers = $('#incorrectAnswers');
 
 var questionOne = [];
 var questionTwo = [];
-var questionOne = [];
+var questionThree = [];
 
 // Counters
 var winCounter = 0;

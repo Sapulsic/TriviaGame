@@ -8,11 +8,18 @@ var $winCount = $('winCount');
 
 var $timeRemain = $('#timeRemain');
 var $question = $('#question');
-var $answers = $('#answers');
+var $choices = $('#choices');
+
+var $correctAnswers = $('#correctAnswers');
+var $incorrectAnswers = $('#incorrectAnswers');
+
+var questionOne = [];
+var questionTwo = [];
+var questionOne = [];
 
 // Counters
-// var winCounter = 0;
-// var lossCounter = 0;
+var winCounter = 0;
+var lossCounter = 0;
 
 // Random
 // var airRandom = Math.floor(Math.random()* 12) + 1;

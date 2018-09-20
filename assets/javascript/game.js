@@ -3,6 +3,7 @@
 // Arrays and Variables for initiating Data
 var $wins = $('#wins');
 var $startGame = $('#startGame');
+var $start = $('.start');
 var $winCount = $('winCount');
 
 var $timeRemain = $('#timeRemain');
@@ -69,10 +70,10 @@ var questionCount = 0;
     function QA() {
         $('#question').text(questions[questionCount]);
         $('#question').show()
-        $('choice1').text(correctAnswer[questionCount][0]);
-        $('choice2').text(correctAnswer[questionCount][1]);
-        $('choice3').text(correctAnswer[questionCount][2]);
-        $('choice4').text(correctAnswer[questionCount][3]);
+        $('#choice1').text(answers[questionCount][0]);
+        $('#choice2').text(answers[questionCount][1]);
+        $('#choice3').text(answers[questionCount][2]);
+        $('#choice4').text(answers[questionCount][3]);
     
         for (let i = 0; i < correctAnswers.length; i++) {
             correctAnswers[i].show();
@@ -83,16 +84,25 @@ var questionCount = 0;
     function check(num) {
         questionCount++
         for (let i = 0; i < correctAnswers.length; i++) {
-            correctAnswers[i].unbind();
-            
+            correctAnswers[i].unbind();    
+        }
+        var answers = $('#num');
+        if (correctAnswer.indexOf(answers) != 1) {
+            score++;
+        }
+        $("score").text = score;
+        if (questionCount < 10) {
+            QA()
+            $('num').focusout()
+        
         }
     }
-    
+
     // Testing / Debugging
     console.log(score);
     
     // Main Process
     //  ============================================
-    QA()
+    // QA()
 
 // });

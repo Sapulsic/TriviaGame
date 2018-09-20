@@ -59,9 +59,32 @@ var questionCount = 0;
     
     function init() {
         debugger;
-        $('score').text(score);
-        if ($("startGame") == "start") {
-            $('startGame').hide();
+        $('#score').text(score);
+        if ($("#startGame") == $(".start")) {
+            $('#startGame').hide();
+            QA()
+        }
+    }
+
+    function QA() {
+        $('#question').text(questions[questionCount]);
+        $('#question').show()
+        $('choice1').text(correctAnswer[questionCount][0]);
+        $('choice2').text(correctAnswer[questionCount][1]);
+        $('choice3').text(correctAnswer[questionCount][2]);
+        $('choice4').text(correctAnswer[questionCount][3]);
+    
+        for (let i = 0; i < correctAnswers.length; i++) {
+            correctAnswers[i].show();
+            
+        }
+    }   
+
+    function check(num) {
+        questionCount++
+        for (let i = 0; i < correctAnswers.length; i++) {
+            correctAnswers[i].unbind();
+            
         }
     }
     
@@ -70,6 +93,6 @@ var questionCount = 0;
     
     // Main Process
     //  ============================================
-
+    QA()
 
 // });

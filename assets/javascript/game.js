@@ -1,10 +1,8 @@
 // Global Variables
 //  ============================================
 // Arrays and Variables for initiating Data
-var $wins = $('#wins');
 var $startGame = $('#startGame');
 var $start = $('.start');
-var $winCount = $('winCount');
 
 var $timeRemain = $('#timeRemain');
 var $question = $('#question');
@@ -97,20 +95,20 @@ $start = $startGame;
         for (let i = 0; i < correctAnswers.length; i++) {
             correctAnswers[i].unbind();    
         }
-        var answers = $('#num');
+        var answers = num;
         if (correctAnswer.indexOf(answers) != 1) {
             score++;
         }
         $score.text = score;
         if (questionCount < 10) {
             QA()
-            $('num').focusout()
+            num.focusout()
         
         }
     }
 
     // Testing / Debugging
-    console.log(score);
+    console.log(correctAnswer);
     
     // Main Process
     //  ============================================

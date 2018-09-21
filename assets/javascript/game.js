@@ -9,13 +9,15 @@ var $winCount = $('winCount');
 var $timeRemain = $('#timeRemain');
 var $question = $('#question');
 
-var gameChoices = $('gameChoices')
-var $choices1 = $('#choices1');
-var $choices2 = $('#choices2');
-var $choices3 = $('#choices3');
-var $choices4 = $('#choices4');
+var $gameChoices = $('#gameChoices')
+var $choice1 = $('#choice1');
+var $choice2 = $('#choice2');
+var $choice3 = $('#choice3');
+var $choice4 = $('#choice4');
 
-var $score = $('score');
+var $totalScore = $('#totalScore');
+var $theScore = ('#theScore');
+var $score = $('#score');
 
 var $correctAnswers = $('#correctAnswers');
 
@@ -53,27 +55,36 @@ var correctAnswer = ["Princess Mononoke","Kiki's Delivery Service","Nausicaa of 
 var score = 0;
 var questionCount = 0;
 
+$start = $startGame;
 
 // Functions
 //  ============================================
 // $(document).ready(function (){
     
     function init() {
-        debugger;
-        $('#score').text(score);
-        if ($("#startGame") == $(".start")) {
-            $('#startGame').hide();
+        // debugger;
+        $question.hide();
+        $gameChoices.hide();
+        $totalScore.hide();
+    }
+    
+    function startGame() {        
+        $totalScore.show();
+        $score.text(score);
+        if ($startGame == $start) {
+            $startGame.hide();
             QA()
         }
     }
 
     function QA() {
-        $('#question').text(questions[questionCount]);
-        $('#question').show()
-        $('#choice1').text(answers[questionCount][0]);
-        $('#choice2').text(answers[questionCount][1]);
-        $('#choice3').text(answers[questionCount][2]);
-        $('#choice4').text(answers[questionCount][3]);
+        $question.text(questions[questionCount]);
+        $question.show()
+        $gameChoices.show()
+        $choice1.text(answers[questionCount][0]);
+        $choice2.text(answers[questionCount][1]);
+        $choice3.text(answers[questionCount][2]);
+        $choice4.text(answers[questionCount][3]);
     
         for (let i = 0; i < correctAnswers.length; i++) {
             correctAnswers[i].show();
@@ -90,7 +101,7 @@ var questionCount = 0;
         if (correctAnswer.indexOf(answers) != 1) {
             score++;
         }
-        $("score").text = score;
+        $score.text = score;
         if (questionCount < 10) {
             QA()
             $('num').focusout()
@@ -103,6 +114,7 @@ var questionCount = 0;
     
     // Main Process
     //  ============================================
+    init()
     // QA()
 
 // });

@@ -6,9 +6,11 @@ var $start = $('.start');
 
 var $timeRemain = $('#timeRemain');
 var $question = $('#question');
-var $idAnswer = $('#idAnswer');
+var $correct = $('.correct');
 
+var $gameDecision = $('.gameChoice')
 var $gameChoices = $('#gameChoices')
+
 var $choice1 = $('#choice1');
 var $choice2 = $('#choice2');
 var $choice3 = $('#choice3');
@@ -63,7 +65,7 @@ $start = $startGame;
     function init() {
         // debugger;
         $question.hide();
-        $gameChoices.hide();
+        $correct.hide();
         $totalScore.hide();
     }
     
@@ -79,35 +81,35 @@ $start = $startGame;
     function QA() {
         // debugger;
         $question.text(questions[questionCount]);
-        $question.show()
-        $gameChoices.show()
+        $question.show();
+        $correct.show();
         $choice1.text(answers[questionCount][0]);
         $choice2.text(answers[questionCount][1]);
         $choice3.text(answers[questionCount][2]);
         $choice4.text(answers[questionCount][3]);
     
-        for (let i = 0; i < correctAnswers.length; i++) {
-            correctAnswers[i].show();
-            
-        }
+        // for (let i = 0; i < $correct.length; i++) {
+        //     $correct[i].on();
+        // };
     }   
 
     function check(num) {
         questionCount++
-        for (let i = 0; i < correctAnswers.length; i++) {
-            correctAnswers[i].unbind();    
-        }
-        var answers = num;
-        if (correctAnswer.indexOf(answers) != 1) {
+        // for (let i = 0; i < $correct.length; i++) {
+        //     $correct[i].off()
+        // };
+        
+        var answerNum = num;
+        if (correctAnswer.indexOf(answerNum) != -1) {
             score++;
         }
-        $score.text = score;
+        $score.text(score);
         if (questionCount < 10) {
-            QA()
-            // num.focusout()
+            QA();
+            // num.blur();
         } else {
             setTimeout(function() {
-                $finalScore.text("You scored: " + score + "out of 10")
+                $finalScore.text("You scored: " + score + " out of 10");
             });
         }
     }
@@ -122,6 +124,5 @@ $start = $startGame;
     // Main Process
     //  ============================================
     init()
-    // QA()
 
 // });

@@ -67,7 +67,7 @@ $start = $startGame;
         $question.hide();
         $correct.hide();
         $totalScore.hide();
-    }
+    };
     
     function startGame() {        
         $totalScore.show();
@@ -75,11 +75,11 @@ $start = $startGame;
         if ($startGame == $start) {
             $startGame.hide();
             QA()
-        }
-    }
+        };
+    };
 
     function QA() {
-        // debugger;
+        debugger;
         $question.text(questions[questionCount]);
         $question.show();
         $correct.show();
@@ -88,21 +88,22 @@ $start = $startGame;
         $choice3.text(answers[questionCount][2]);
         $choice4.text(answers[questionCount][3]);
     
-        // for (let i = 0; i < $correct.length; i++) {
-        //     $correct[i].on();
-        // };
-    }   
+        for (var i = 0; i < $correct.length; i++) {
+            $correct[i] = correctAnswer[i];
+        };
+    };
 
     function check(num) {
+        debugger;
         questionCount++
-        // for (let i = 0; i < $correct.length; i++) {
-        //     $correct[i].off()
-        // };
+        for (var i = 0; i < $correct.length; i++) {
+            $correct[i];
+        };
         
         var answerNum = num;
         if (correctAnswer.indexOf(answerNum) != -1) {
             score++;
-        }
+        };
         $score.text(score);
         if (questionCount < 10) {
             QA();
@@ -110,13 +111,23 @@ $start = $startGame;
         } else {
             setTimeout(function() {
                 $finalScore.text("You scored: " + score + " out of 10");
-            });
-        }
-    }
+            },  500);
+            newGame()
+        };
+    };
 
     function newGame() {
+        $startGame.show();
+        $startGame.text('New Game')
+        
         score = 0;
-    }
+        questionCount = 0;
+
+        setTimeout(function() {
+            $finalScore.html('');
+        }, 3000);
+        // startGame();
+    };
 
     // Testing / Debugging
     console.log(correctAnswer);

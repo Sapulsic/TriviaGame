@@ -6,6 +6,7 @@ var $start = $('.start');
 
 var $timeRemain = $('#timeRemain');
 var $question = $('#question');
+var $idAnswer = $('#idAnswer');
 
 var $gameChoices = $('#gameChoices')
 var $choice1 = $('#choice1');
@@ -17,14 +18,14 @@ var $totalScore = $('#totalScore');
 var $theScore = ('#theScore');
 var $score = $('#score');
 
-var $correctAnswers = $('#correctAnswers');
+var $finalScore = $('#finalScore');
 
 var questions = [
     "What is the name of the movie about a young warrior looking for a cure, a lady and her proud clan of humans, a young girl and her relationships with the animals of the forest?",
     "What is the name of this animated film about a young girl's own 'mailing company' in a new town, a journey to become a witch, and a chatty cat?",
     "Name this Miyazaki masterpiece about a story of a seaside kingdom and another story a thousand years after a great war. A courageous princess and the 'Ohmu' are the main characters.",
     "What movie is about a story of a mining apprentice, a legendary castle, air pirates, secret agents, and a luminous crystal?",
-    "5. What Miyazaki movie is about a story of a girl and her parents, a bathhouse, a transforming boy, and an incredible world of spirits?",
+    "What Miyazaki movie is about a story of a girl and her parents, a bathhouse, a transforming boy, and an incredible world of spirits?",
     "What is the title of an animated film about a story of a new home in the country-side, a forest spirit, and a cat/bus?",
     "What is the title of this animated film about a story of nocturnal animals with the power to transform and a clash between the natural world and modern civilization?",
     "Which Miyazaki animated film is about a girl who works in a hat shop, a mysterious wizard, and a moving castle?",
@@ -76,6 +77,7 @@ $start = $startGame;
     }
 
     function QA() {
+        // debugger;
         $question.text(questions[questionCount]);
         $question.show()
         $gameChoices.show()
@@ -102,9 +104,16 @@ $start = $startGame;
         $score.text = score;
         if (questionCount < 10) {
             QA()
-            num.focusout()
-        
+            // num.focusout()
+        } else {
+            setTimeout(function() {
+                $finalScore.text("You scored: " + score + "out of 10")
+            });
         }
+    }
+
+    function newGame() {
+        score = 0;
     }
 
     // Testing / Debugging

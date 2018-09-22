@@ -47,7 +47,7 @@ body {
         /* margin-bottom: 20px; */
         font-family: 'Titillium Web', sans-serif;
         font-size: 1.5em;
-        margin: -15% 0 10;
+        margin: 0 auto;
 }
 
 #triviaGame h1 img {
@@ -68,7 +68,7 @@ body {
 #triviaGame #question {
     background-color: rgba(63, 63, 63, 0.76);
     color: white;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     margin: 2.5% 15%;
@@ -76,4 +76,15 @@ body {
     border-radius: 15px;
 }
 
-#triviaGame #gameChoice {}
+#triviaGame #newGame button {
+    font-size: 1em;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    padding: 2%;
+    border: none;
+    border-radius: 15px;
+    /* margin: 1%; */
+    text-align: center;
+}
+
+

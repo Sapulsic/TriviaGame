@@ -90,7 +90,7 @@ $start = $startGame;
     }
 
     function check(solr) {
-        debugger;
+        // debugger;
         questionCount++
 
         var answerNum = $(solr)[0].text;
@@ -107,10 +107,10 @@ $start = $startGame;
             QA();
             $(solr).focusout();
         } else {
-            setTimeout(function() {
-                $finalScore.text("You scored: " + score + " out of 10");
-            },  500);
-            // newGame()
+            // setTimeout(function() {
+            //     $finalScore.text("You scored: " + score + " out of 10");
+            // },  500);
+            newGame()
         }
     }
 
@@ -121,9 +121,9 @@ $start = $startGame;
         score = 0;
         questionCount = 0;
 
-        setTimeout(function() {
-            $finalScore.html('');
-        }, 3000);
+        // setTimeout(function() {
+        //     $finalScore.html('');
+        // }, 3000);
         // startGame();
     };
 

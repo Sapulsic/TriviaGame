@@ -60,7 +60,7 @@ $start = $startGame;
 
 // Functions
 //  ============================================
-$(document).ready(function (){
+// $(document).ready(function (){
     
     function init() {
         // debugger;
@@ -134,4 +134,4 @@ $(document).ready(function (){
     //  ============================================
     init()
 
-});
+// });

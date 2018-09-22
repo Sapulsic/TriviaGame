@@ -48,8 +48,8 @@ var answers = [
     ["Steamboy", "My Neighbor Totoro", "My Neighbors The Yamadas", "Whisper of the Heart"]
 ];
 
-var correctAnswer = [2, 2, 0, 2, 2, 3, 0, 3, 1, 2];
-// var correctAnswer = ["Princess Mononoke","Kiki's Delivery Service","Nausicaa of the Valley of the Wind", "Castle In The Sky", "Spirited Away", "My Neighbor Totoro", "Pom Poko", "Howl's Moving Castle", "Whisper of the Heart", "My Neighbors The Yamadas"];
+// var correctAnswer = [2, 2, 0, 2, 2, 3, 0, 3, 1, 2];
+var correctAnswer = ["Princess Mononoke","Kiki's Delivery Service","Nausicaa of the Valley of the Wind", "Castle In The Sky", "Spirited Away", "My Neighbor Totoro", "Pom Poko", "Howl's Moving Castle", "Whisper of the Heart", "My Neighbors The Yamadas"];
 
 
 // Counters
@@ -60,7 +60,7 @@ $start = $startGame;
 
 // Functions
 //  ============================================
-// $(document).ready(function (){
+$(document).ready(function (){
     
     function init() {
         // debugger;
@@ -93,14 +93,14 @@ $start = $startGame;
         debugger;
         questionCount++
 
-        var answerNum = solr;
-        for (var i = 0; i < correctAnswer.length; i++) {
-            if (correctAnswer[i] === answerNum - 1 ) {
+        var answerNum = $(solr)[0].text;
+        // for (var i = 0; i < correctAnswer.length; i++) {
+            if (correctAnswer.indexOf(answerNum) != 1) {
                 score++;
             }
-        }
+        // }
 
-    console.log(answerNum);
+        console.log(answerNum);
 
         $score.text(score);
         if (questionCount < 10) {
@@ -134,4 +134,4 @@ $start = $startGame;
     //  ============================================
     init()
 
-// });
+});

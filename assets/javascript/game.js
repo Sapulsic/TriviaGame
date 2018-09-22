@@ -6,10 +6,10 @@ var $start = $('.start');
 
 var $timeRemain = $('#timeRemain');
 var $question = $('#question');
-var $correct = $('.correct');
 
-var $gameDecision = $('.gameChoice')
-var $gameChoices = $('#gameChoices')
+var $gameDecision = $('.gameDecision');
+var $gameChoices = $('#gameChoice');
+var $choices = $('.choices');
 
 var $choice1 = $('#choice1');
 var $choice2 = $('#choice2');
@@ -48,8 +48,8 @@ var answers = [
     ["Steamboy", "My Neighbor Totoro", "My Neighbors The Yamadas", "Whisper of the Heart"]
 ];
 
-// var correctAnswer = [2, 2, 0, 2, 2, 3, 0, 3, 1, 2];
-var correctAnswer = ["Princess Mononoke","Kiki's Delivery Service","Nausicaa of the Valley of the Wind", "Castle In The Sky", "Spirited Away", "My Neighbor Totoro", "Pom Poko", "Howl's Moving Castle", "Whisper of the Heart", "My Neighbors The Yamadas"];
+var correctAnswer = [2, 2, 0, 2, 2, 3, 0, 3, 1, 2];
+// var correctAnswer = ["Princess Mononoke","Kiki's Delivery Service","Nausicaa of the Valley of the Wind", "Castle In The Sky", "Spirited Away", "My Neighbor Totoro", "Pom Poko", "Howl's Moving Castle", "Whisper of the Heart", "My Neighbors The Yamadas"];
 
 
 // Counters
@@ -65,56 +65,54 @@ $start = $startGame;
     function init() {
         // debugger;
         $question.hide();
-        $correct.hide();
+        $choices.hide();
         $totalScore.hide();
-    };
+    }
     
     function startGame() {        
         $totalScore.show();
         $score.text(score);
         if ($startGame == $start) {
             $startGame.hide();
-            QA()
-        };
-    };
+            QA();
+        }
+    }
 
     function QA() {
-        debugger;
+        // debugger;
         $question.text(questions[questionCount]);
         $question.show();
-        $correct.show();
+        $choices.show();
         $choice1.text(answers[questionCount][0]);
         $choice2.text(answers[questionCount][1]);
         $choice3.text(answers[questionCount][2]);
         $choice4.text(answers[questionCount][3]);
-    
-        for (var i = 0; i < $correct.length; i++) {
-            $correct[i] = correctAnswer[i];
-        };
-    };
+    }
 
-    function check(num) {
+    function check(solr) {
         debugger;
         questionCount++
-        for (var i = 0; i < $correct.length; i++) {
-            $correct[i];
-        };
-        
-        var answerNum = num;
-        if (correctAnswer.indexOf(answerNum) != -1) {
-            score++;
-        };
+
+        var answerNum = solr;
+        for (var i = 0; i < correctAnswer.length; i++) {
+            if (correctAnswer[i] === answerNum - 1 ) {
+                score++;
+            }
+        }
+
+    console.log(answerNum);
+
         $score.text(score);
         if (questionCount < 10) {
             QA();
-            // num.blur();
+            $(solr).focusout();
         } else {
             setTimeout(function() {
                 $finalScore.text("You scored: " + score + " out of 10");
             },  500);
-            newGame()
-        };
-    };
+            // newGame()
+        }
+    }
 
     function newGame() {
         $startGame.show();
@@ -130,7 +128,7 @@ $start = $startGame;
     };
 
     // Testing / Debugging
-    console.log(correctAnswer);
+    // console.log(answerNum);
     
     // Main Process
     //  ============================================

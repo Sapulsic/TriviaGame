@@ -91,16 +91,19 @@ $start = $startGame;
 
     function check(solr) {
         // debugger;
-        questionCount++
-
-        var answerNum = $(solr)[0].text;
+        
+        console.log(solr)
+        
+        console.log(Object.assign($(this.correctAnswer))[questionCount])
+        console.log(answers[questionCount][solr-1])
         // for (var i = 0; i < correctAnswer.length; i++) {
-            if (correctAnswer.indexOf(answerNum) != 1) {
+            if (answers[questionCount][solr-1] === Object.assign($(this.correctAnswer))[questionCount]) {
                 score++;
             }
         // }
 
-        console.log(answerNum);
+        questionCount++
+
 
         $score.text(score);
         if (questionCount < 10) {
